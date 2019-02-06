@@ -1,0 +1,93 @@
+swagger: "2.0"
+info:
+  description: "This is a Api Test For GOGONONO."
+  version: "1.0.0"
+  title: "GOGONONO"
+host: "KpjGogonono-env.u4ebegszih.ap-northeast-2.elasticbeanstalk.com:3000"
+basePath: "/"
+tags:
+  - name: "gogonono"
+    description: "Test For gogonono"
+  - name: "User"
+    description: "유저 관련 API"
+  - name: "Group"
+    description: "모임 관련 API"
+schemes:
+  - "http"
+  - "https"
+paths:
+  /users:
+    get:
+      tags:
+        - "User"
+      summary: "유저 정보 호출"
+      description: "유저 정보 호출"
+      operationId: "GetUsers"
+      consumes:
+        - "application/json"
+        - "application/xml"
+      produces:
+        - "application/json"
+        - "application/xml"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request.
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: Not found.
+        '5XX':
+          description: Unexpected error.
+  /users/login/{email}:
+    get:
+      tags:
+      - "User"
+      summary: "로그인 시 모임 리스트 호출"
+      description: "로그인 시 모임 리스트 호출"
+      operationId: "getGroupsByEmail"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "email"
+        in: "path"
+        required: true
+        description: "로그인 시도한 email 주소"
+        type: "string"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request.
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: Not found.
+        '5XX':
+          description: Unexpected error.
+  /groups:
+    get:
+      tags:
+        - "Group"
+      summary: "모임 리스트 호출"
+      description: "모임 리스트 호출"
+      operationId: "GetGroups"
+      consumes:
+        - "application/json"
+        - "application/xml"
+      produces:
+        - "application/json"
+        - "application/xml"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request.
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: Not found.
+        '5XX':
+          description: Unexpected error.
